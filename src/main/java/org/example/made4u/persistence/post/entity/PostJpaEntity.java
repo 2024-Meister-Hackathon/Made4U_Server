@@ -1,15 +1,18 @@
 package org.example.made4u.persistence.post.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+import org.example.made4u.persistence.user.entity.UserJpaEntity;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.util.UUID;
 
 @Getter
 @Builder
+@DynamicInsert
+@DynamicUpdate
 @Entity(name = "post")
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -19,6 +22,10 @@ public class PostJpaEntity {
     @Column(nullable = false)
     private UUID postId;
 
+    @ManyToOne(optional = false, targetEntity = UserJpaEntity.class)
+    @JoinColumn(referencedColumnName = "email", name = "email")
+    private UserJpaEntity user;
+
     @Column(nullable = false, columnDefinition = "VARCHAR(50)")
     private String title;
 
@@ -26,5 +33,5 @@ public class PostJpaEntity {
     private String contents;
 
     @Column(nullable = false,  columnDefinition = "VARCHAR(50)")
-    private String tag;
+    private String tags;
 }

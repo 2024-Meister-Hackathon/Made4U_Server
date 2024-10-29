@@ -6,6 +6,10 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum ErrorCode {
+    // post
+    POST_NOT_EXISTS(404, "존재하지 않는 게시글입니다."),
+    DONT_HAVE_PERMISSION_POST(404, "게시글을 수정/삭제할 권한이 없습니다."),
+
     // user
     PASSWORD_MISMATCHES(401, "비밀번호가 일치하지 않습니다."),
     USER_NOT_FOUND(404, "존재하지 않는 유저입니다."),

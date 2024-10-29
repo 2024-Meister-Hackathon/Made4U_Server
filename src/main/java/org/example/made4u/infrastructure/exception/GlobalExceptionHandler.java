@@ -16,11 +16,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(errorCode.getErrorCode()));
     }
 
-    @ExceptionHandler
-    public ResponseEntity<ExceptionResponse> RuntimeExceptionHandler(RuntimeException e) {
-        ErrorCode errorCode = ErrorCode.INTERNAL_SERVER_ERROR;
-        ExceptionResponse response = ExceptionResponse.of(errorCode.getErrorCode(), errorCode.getErrorStatus(), e.getMessage());
-
-        return new ResponseEntity<>(response, HttpStatusCode.valueOf(errorCode.getErrorCode()));
-    }
+//    @ExceptionHandler
+//    public ResponseEntity<ExceptionResponse> RuntimeExceptionHandler(RuntimeException e) {
+//        System.out.println(e.getCause());
+//
+//        ErrorCode errorCode = ErrorCode.INTERNAL_SERVER_ERROR;
+//        ExceptionResponse response = ExceptionResponse.of(errorCode.getErrorCode(), errorCode.getErrorStatus(), e.getMessage());
+//
+//        return new ResponseEntity<>(response, HttpStatusCode.valueOf(errorCode.getErrorCode()));
+//    }
 }
