@@ -3,9 +3,11 @@ package org.example.made4u.persistence.user.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 @Builder
 @Getter
+@DynamicInsert
 @Entity(name = "user")
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -29,4 +31,13 @@ public class UserJpaEntity {
     @ColumnDefault("'NONE'")
     @Column(nullable = false)
     private Membership membership;
+
+    @Column(nullable = false, columnDefinition = "VARCHAR(50)")
+    private String tend;
+
+    @Column(nullable = false, columnDefinition = "VARCHAR(50)")
+    private String favor;
+
+    @Column(nullable = false, columnDefinition = "TINYINT")
+    private Boolean isVegetarian;
 }

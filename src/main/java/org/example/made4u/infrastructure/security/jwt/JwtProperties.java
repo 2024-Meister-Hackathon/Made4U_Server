@@ -7,6 +7,6 @@ public record JwtProperties (
         String secret,
         String header,
         String prefix,
-        String access_expire,
-        String refresh_expire
+        Long access_expire,
+        Long refresh_expire
 ) { }

@@ -22,7 +22,7 @@ public class JwtParser {
 
         CustomUserDetail detail = getDetail(claims.getSubject());
 
-        return new UsernamePasswordAuthenticationToken(detail.email(), "", detail.getAuthorities());
+        return new UsernamePasswordAuthenticationToken(detail, "", detail.getAuthorities());
     }
 
     private Claims getClaims(String token) {
@@ -43,7 +43,7 @@ public class JwtParser {
     public String getHeader(HttpServletRequest request) {
         String header = request.getHeader(jwtProperties.header());
 
-        if (header.startsWith(jwtProperties.prefix()) && header.length() > 7) {
+        if (header != null && header.startsWith(jwtProperties.prefix()) && header.length() > 7) {
             return header.split(" ")[1];
         }
         return null;
