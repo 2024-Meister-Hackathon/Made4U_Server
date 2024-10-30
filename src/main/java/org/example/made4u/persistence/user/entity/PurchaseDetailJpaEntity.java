@@ -18,11 +18,11 @@ public class PurchaseDetailJpaEntity {
     @Column(nullable = false)
     private UUID purchaseId;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = UserJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = UserJpaEntity.class)
     @JoinColumn(referencedColumnName = "email", name = "email", nullable = false)
-    private String email;
+    private UserJpaEntity user;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = ProductJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = ProductJpaEntity.class)
     @JoinColumn(referencedColumnName = "productId", name = "productId", nullable = false)
-    private UUID productId;
+    private ProductJpaEntity product;
 }
