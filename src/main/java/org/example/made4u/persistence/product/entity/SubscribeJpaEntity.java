@@ -15,12 +15,12 @@ import java.util.UUID;
 public class SubscribeJpaEntity {
 
     @Id
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = UserJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = UserJpaEntity.class)
     @JoinColumn(referencedColumnName = "email", name = "email", nullable = false)
-    private String email;
+    private UserJpaEntity user;
 
     @Id
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = ProductJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = ProductJpaEntity.class)
     @JoinColumn(referencedColumnName = "productId", name = "productId", nullable = false)
-    private UUID productId;
+    private ProductJpaEntity product;
 }

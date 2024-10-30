@@ -4,9 +4,11 @@ package org.example.made4u.persistence.post.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.example.made4u.persistence.user.entity.UserJpaEntity;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
@@ -34,4 +36,8 @@ public class PostJpaEntity {
 
     @Column(nullable = false,  columnDefinition = "VARCHAR(50)")
     private String tags;
+
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createAt;
 }
