@@ -37,6 +37,9 @@ public class PostJpaEntity {
     @Column(nullable = false,  columnDefinition = "VARCHAR(50)")
     private String tags;
 
+    @Column(columnDefinition = "VARCHAR(150)")
+    private String mainImg;
+    
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
     private LocalDateTime createAt;

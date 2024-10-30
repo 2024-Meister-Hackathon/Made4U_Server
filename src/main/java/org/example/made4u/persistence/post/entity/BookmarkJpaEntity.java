@@ -16,12 +16,12 @@ import java.util.UUID;
 public class BookmarkJpaEntity {
 
     @Id
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = UserJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = UserJpaEntity.class)
     @JoinColumn(referencedColumnName = "email", name = "email", nullable = false)
-    private String email;
+    private UserJpaEntity user;
 
     @Id
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = PostJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = PostJpaEntity.class)
     @JoinColumn(referencedColumnName = "postId", name = "postId", nullable = false)
-    private UUID postId;
+    private PostJpaEntity post;
 }
