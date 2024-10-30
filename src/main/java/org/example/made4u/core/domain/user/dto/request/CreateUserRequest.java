@@ -11,5 +11,6 @@ public record CreateUserRequest (
         String nickname,
         String[] tend,
         String[] favor,
-        String vegetarian
+        String vegetarian,
+        String religion
 ) { }

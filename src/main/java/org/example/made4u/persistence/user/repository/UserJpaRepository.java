@@ -9,4 +9,6 @@ import java.util.UUID;
 public interface UserJpaRepository extends CrudRepository<UserJpaEntity, String> {
 
     Optional<UserJpaEntity> findByEmail(String email);
+
+    Boolean existsByEmail(String email);
 }
