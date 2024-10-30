@@ -8,6 +8,7 @@ import org.example.made4u.core.domain.user.service.CommendUserService;
 import org.example.made4u.core.domain.user.service.LoginService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,8 +25,8 @@ public class UserWebAdapter {
 
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
-    public void signup(@RequestBody CreateUserRequest request) {
-        commendUserService.createUser(request);
+    public void signup(@RequestPart("body") CreateUserRequest request, @RequestPart(value = "file", required = false) MultipartFile file) {
+        commendUserService.createUser(request, file);
     }
 
     @DeleteMapping

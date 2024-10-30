@@ -8,7 +8,6 @@ public record CreateUserRequest (
         String email,
         String password,
         String nickname,
-        Optional<String> profile,
         String[] tend,
         String[] favor,
         Boolean isVegetarian

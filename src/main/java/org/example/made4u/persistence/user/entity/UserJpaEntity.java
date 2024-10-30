@@ -24,7 +24,7 @@ public class UserJpaEntity {
     private String nickname;
 
     @ColumnDefault("'DEFAULT_IMG_URL'") // todo: 기본 URL 정해지면 그걸로 변경
-    @Column(nullable = false, columnDefinition = "VARCHAR(50)")
+    @Column(nullable = false, columnDefinition = "VARCHAR(150)")
     private String profile;
 
     @Enumerated(EnumType.STRING)
