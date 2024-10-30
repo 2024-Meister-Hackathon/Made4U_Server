@@ -7,6 +7,7 @@ import org.example.made4u.core.domain.user.exception.EmailAlreadyExistException;
 import org.example.made4u.core.domain.user.service.CommendUserService;
 import org.example.made4u.infrastructure.thirdparty.s3.FileUploader;
 import org.example.made4u.persistence.user.entity.UserJpaEntity;
+import org.example.made4u.persistence.user.entity.VeganType;
 import org.example.made4u.persistence.user.repository.UserJpaRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -41,7 +42,7 @@ public class CommendUserServiceImpl implements CommendUserService {
                 .email(request.email())
                 .favor(String.join(",", request.favor()))
                 .tend(String.join(",", request.tend()))
-                .isVegetarian(request.isVegetarian())
+                .vegetarian(VeganType.valueOf(request.vegetarian()))
                 .build()
         );
     }

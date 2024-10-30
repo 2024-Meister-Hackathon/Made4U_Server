@@ -1,5 +1,6 @@
 package org.example.made4u.core.domain.user.dto.request;
 
+import org.example.made4u.persistence.user.entity.VeganType;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Optional;
@@ -10,5 +11,5 @@ public record CreateUserRequest (
         String nickname,
         String[] tend,
         String[] favor,
-        Boolean isVegetarian
+        String vegetarian
 ) { }

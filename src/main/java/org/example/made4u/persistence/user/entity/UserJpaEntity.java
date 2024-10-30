@@ -39,5 +39,5 @@ public class UserJpaEntity {
     private String favor;
 
     @Column(nullable = false, columnDefinition = "TINYINT")
-    private Boolean isVegetarian;
+    private VeganType vegetarian;
 }

@@ -8,6 +8,7 @@ import org.example.made4u.core.domain.post.service.CommendPostService;
 import org.example.made4u.core.domain.post.service.UpdatePostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,8 +19,8 @@ public class PostWebAdapter {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CreatePostResponse createPost(@RequestBody CreatePostRequest request) {
-        return commendPostService.createPost(request);
+    public CreatePostResponse createPost(@RequestPart(name = "body") CreatePostRequest request, @RequestPart(name = "file", required = false) MultipartFile file) {
+        return commendPostService.createPost(request, file);
     }
 
     @DeleteMapping("/{postId}")
