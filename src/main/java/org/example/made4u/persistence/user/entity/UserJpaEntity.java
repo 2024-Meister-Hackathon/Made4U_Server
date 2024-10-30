@@ -38,6 +38,12 @@ public class UserJpaEntity {
     @Column(nullable = false, columnDefinition = "VARCHAR(50)")
     private String favor;
 
-    @Column(nullable = false, columnDefinition = "TINYINT")
+    @Column(nullable = false)
     private VeganType vegetarian;
+
+    @Column(nullable = false)
+    private ReligionType religion;
+
+    @Column(nullable = false, columnDefinition = "VARCHAR(50)")
+    private String allergy;
 }

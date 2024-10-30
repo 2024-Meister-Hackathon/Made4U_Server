@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.made4u.core.common.security.service.SecurityService;
 import org.example.made4u.core.domain.user.dto.request.CreateUserRequest;
 import org.example.made4u.core.domain.user.exception.EmailAlreadyExistException;
-import org.example.made4u.core.domain.user.service.CommendUserService;
+import org.example.made4u.core.domain.user.service.CommandUserService;
 import org.example.made4u.infrastructure.thirdparty.s3.FileUploader;
 import org.example.made4u.persistence.user.entity.UserJpaEntity;
 import org.example.made4u.persistence.user.entity.VeganType;
@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class CommendUserServiceImpl implements CommendUserService {
+public class CommandUserServiceImpl implements CommandUserService {
     private final SecurityService securityService;
     private final UserJpaRepository userJpaRepository;
     private final BCryptPasswordEncoder passwordEncoder;

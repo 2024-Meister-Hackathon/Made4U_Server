@@ -23,4 +23,13 @@ public class ProductJpaEntity {
 
     @Column(nullable = false, columnDefinition = "VARCHAR(50)")
     private String name;
+
+    @Column(nullable = false, columnDefinition = "VARCHAR(50)")
+    private String allergy;
+
+    @Column(nullable = false, columnDefinition = "VARCHAR(50)")
+    private String religion;
+
+    @Column(nullable = false, columnDefinition = "VARCHAR(100)")
+    private String vegan;
 }

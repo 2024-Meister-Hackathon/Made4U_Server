@@ -3,14 +3,21 @@ package org.example.made4u.core.domain.post.service.Impl;
 import lombok.RequiredArgsConstructor;
 import org.example.made4u.core.common.security.service.SecurityService;
 import org.example.made4u.core.domain.post.dto.reqeust.CreatePostRequest;
+import org.example.made4u.core.domain.post.dto.reqeust.RecipeDto;
 import org.example.made4u.core.domain.post.dto.response.CreatePostResponse;
 import org.example.made4u.core.domain.post.exception.DontHavePermissionPostException;
 import org.example.made4u.core.domain.post.exception.PostNotExistException;
-import org.example.made4u.core.domain.post.service.CommendPostService;
+import org.example.made4u.core.domain.post.service.CommandPostService;
 import org.example.made4u.core.domain.user.exception.UserNotExistException;
+import org.example.made4u.core.domain.user.service.FindUserService;
 import org.example.made4u.infrastructure.thirdparty.s3.FileUploader;
 import org.example.made4u.persistence.post.entity.PostJpaEntity;
+import org.example.made4u.persistence.post.entity.RecipeJpaEntity;
 import org.example.made4u.persistence.post.repository.PostJpaRepository;
+import org.example.made4u.persistence.post.repository.RecipeJpaRepository;
+import org.example.made4u.persistence.product.entity.UseJpaEntity;
+import org.example.made4u.persistence.product.repository.ProductJpaRepository;
+import org.example.made4u.persistence.product.repository.UseJpaRepository;
 import org.example.made4u.persistence.user.entity.UserJpaEntity;
 import org.example.made4u.persistence.user.repository.UserJpaRepository;
 import org.springframework.stereotype.Service;
@@ -22,35 +29,18 @@ import java.util.UUID;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class CommendPostServiceImpl implements CommendPostService {
+public class CommandPostServiceImpl implements CommandPostService {
     private final PostJpaRepository postJpaRepository;
     private final SecurityService securityService;
-    private final UserJpaRepository userJpaRepository;
-    private final FileUploader fileUploader;
+    private final ProductJpaRepository productJpaRepository;
+    private final UseJpaRepository useJpaRepository;
+    private final RecipeJpaRepository recipeJpaRepository;
 
     @Override
-    public CreatePostResponse createPost(CreatePostRequest request, MultipartFile file) {
-        UserJpaEntity user = userJpaRepository.findByEmail(securityService.getCurrentUserEmail()).orElseThrow(
-                () -> UserNotExistException.EXCEPTION
-        );
+    public void createPost(PostJpaEntity post) {
+        postJpaRepository.save(post);
 
-        String fileUrl = null;
-        if (file != null) {
-            fileUrl = fileUploader.upload(file);
-        }
 
-        UUID postId = UUID.randomUUID();
-        postJpaRepository.save(PostJpaEntity.builder()
-                    .postId(postId)
-                    .user(user)
-                    .title(request.title())
-                    .contents(request.contents())
-                    .tags(String.join(",", request.tags()))
-                    .mainImg(fileUrl)
-                    .build()
-        );
-
-        return new CreatePostResponse(postId.toString());
     }
 
     @Override

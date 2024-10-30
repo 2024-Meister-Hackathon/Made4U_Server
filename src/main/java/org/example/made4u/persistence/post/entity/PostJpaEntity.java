@@ -39,6 +39,12 @@ public class PostJpaEntity {
 
     @Column(columnDefinition = "VARCHAR(150)")
     private String mainImg;
+
+    @Column(columnDefinition = "VARCHAR(50)")
+    private String category;
+
+    @Column(columnDefinition = "VARCHAR(50)")
+    private String taste;
     
     @CreationTimestamp
     @Column(nullable = false, updatable = false)

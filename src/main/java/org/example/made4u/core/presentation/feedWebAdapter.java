@@ -21,6 +21,12 @@ public class feedWebAdapter {
         return getService.getByTime(order);
     }
 
+    @GetMapping("/recommend")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<PostJpaEntity> getRecommend() {
+        return getService.getRecommend();
+    }
+
     @GetMapping("/keyword/{keyword}")
     @ResponseStatus(HttpStatus.CREATED)
     public List<PostJpaEntity> getByKeyword(@PathVariable String keyword) {

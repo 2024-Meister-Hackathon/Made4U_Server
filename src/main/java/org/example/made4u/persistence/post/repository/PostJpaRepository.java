@@ -16,6 +16,8 @@ public interface PostJpaRepository extends CrudRepository<PostJpaEntity, UUID> {
 
     List<PostJpaEntity> findAll(Sort sort);
 
+    List<PostJpaEntity> findAll();
+
     @Query("SELECT p FROM post p WHERE p.title LIKE %:keyword% OR p.contents LIKE %:keyword% OR p.tags LIKE %:keyword%")
     List<PostJpaEntity> searchByKeyword(@Param("keyword") String keyword);
 }
